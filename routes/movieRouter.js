@@ -13,10 +13,10 @@ router.get('/', index);
 
 //show
 //localhost:3000/api/movies/:id
-router.get('/', show);
+router.get('/:id', show);
 
 //destroy
 //localhost:3000/api/movies/:id
-router.delete('/', destroy);
+router.delete('/:id', destroy);
 
 export default router
