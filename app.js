@@ -7,6 +7,12 @@ const port = 3000;
 
 import movieRouter from './routes/movieRouter.js'
 
+//middleware per gestire asset statici
+app.use( express.static('public') )
+
+//middleware per gestire indormazioni del body
+app.use( express.json() )
+
 //router movies
 app.use( '/movies', movieRouter )
 
