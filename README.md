@@ -25,3 +25,29 @@ passaggi:
     console.log(`Server Movies in funzione sulla porta: ${port}`)
     })
     ```
+6. aggiungi cartelle:
+    middlewares, controllers, data, public, routes
+    e il file: .env
+
+7. creare il file dentro la cartella data: db.js
+    - modifico il file:
+    ```javascript
+    import mysql from "mysql2"
+
+    const connection = mysql.createConnection({
+        host: process.env.DB_HOST || "localhost",
+        user: process.env.DB_USER ||"root",
+        password: process.env.DB_PASSWORD ||'',
+        database: process.env.DB_NAME 
+    });
+
+    connection.connect( (err) => {
+        if(err) throw err;
+
+        console.log( "Connessione al DB avvenuta con successo" )
+    } )
+
+    export default connection;
+    ```
+8. aggiornamento del file package.json e della chiave script per leggere il .env con:
+    "watch": "node --env-file=.env --watch app.js"
