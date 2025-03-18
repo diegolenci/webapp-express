@@ -3,7 +3,16 @@ import express from "express";
 
 //impostiamo express e la porta del server
 const app = express();
+//import cors
+import cors from 'cors'
 const port = 3000;
+
+//middleware cors
+app.use(
+    cors({
+        origin: process.env.FRONTEND_APP
+    })
+)
 
 import movieRouter from './routes/movieRouter.js'
 
