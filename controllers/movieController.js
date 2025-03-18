@@ -8,7 +8,6 @@ function index(req, res){
             error: 'Errore lato server INDEX function'
         })
 
-        //res.json(results);
 
         const movies = results.map( movie => {
             return{
@@ -18,6 +17,7 @@ function index(req, res){
         })
 
         res.json(movies)
+
     })
 }
 
@@ -41,11 +41,16 @@ function show(req, res){
 
         connection.query( reviewsSql, [id], (err, reviewsResults) => {
             if(err) return res.status(500).json({
-                error: 'Errore lato server INDEX function'
+                error: 'Errore lato server SHOW function'
             })
 
             movie.reviews = reviewsResults
-            res.json(movie)
+            //res.json(movie)
+
+            res.json({
+                ...movie,
+                image: req.imagePath + movie.image
+            })
         })
     })
 }
