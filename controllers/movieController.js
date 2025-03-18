@@ -8,7 +8,16 @@ function index(req, res){
             error: 'Errore lato server INDEX function'
         })
 
-        res.json(results);
+        //res.json(results);
+
+        const movies = results.map( movie => {
+            return{
+                ...movie,
+                image: req.imagePath + movie.image
+            }
+        })
+
+        res.json(movies)
     })
 }
 

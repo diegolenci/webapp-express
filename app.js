@@ -15,12 +15,16 @@ app.use(
 )
 
 import movieRouter from './routes/movieRouter.js'
+import imagePathMiddleware from "./middlewares/imagePath.js";
 
 //middleware per gestire asset statici
 app.use( express.static('public') )
 
 //middleware per gestire indormazioni del body
 app.use( express.json() )
+
+//middleware per gestire le immagini
+app.use( imagePathMiddleware )
 
 //router movies
 app.use( '/movies', movieRouter )
